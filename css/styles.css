@@ -1,0 +1,41 @@
+#programa {
+  color: lightskyblue;
+}
+
+#banner {
+  width: 100%;
+  background-image: url(../images/banner.png);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#photo_perfil {
+  margin-top: 1em;
+  width: 15%;
+  height: 15%;
+  border-radius: 30%;
+}
+
+#banner h1 {
+  color: white;
+}
+#banner h2 {
+  color: white;
+}
+#banner p {
+  color: white;
+}
+
+.img_jobs {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.img_education {
+  max-width: 150px;
+  max-height: 150px;
+  position: relative;
+  margin: auto;
+  margin-top: 1rem;
+}
