@@ -1,0 +1,62 @@
+<!-- Proyectos -->
+<div class="card m-2">
+  <div class="card-header background" id="proyectos">
+    <span class="contraste_background">Proyectos</span>
+    <i
+      class="fas fa-plus position-absolute top-0 end-0 m-2 contraste_background"
+    ></i>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col col-3" *ngFor="let proyecto of proyectosList">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            [attr.data-bs-target]="proyecto.target"
+          >
+            {{ proyecto.name }}</button
+          ><i class="far fa-edit position-absolute"></i>
+        </div>
+        <div *ngFor="let proyecto of proyectosList">
+          <div
+            class="modal fade"
+            [id]="proyecto.id"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    {{ proyecto.name }}
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  {{ proyecto.description }}
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

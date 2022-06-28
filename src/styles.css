@@ -4,7 +4,7 @@
 
 #banner {
   width: 100%;
-  background-image: url(../images/banner.png);
+  background-image: url(./assets/banner.png);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -38,4 +38,29 @@
   position: relative;
   margin: auto;
   margin-top: 1rem;
+}
+
+.background {
+  background: radial-gradient(
+    79.43% 251.58% at 23.18% 73.07%,
+    #0142a0 0,
+    #0f133a 44.41%,
+    #101034 56.43%,
+    #141034 69.58%,
+    #301436 100%,
+    #411958 0
+  );
+}
+
+.contraste_background {
+  color: #16f4d0;
+}
+
+.nav-link {
+  color: #16f4d0;
+}
+
+.nav-link-hover:hover {
+  background-color: transparent;
+  color: white;
 }

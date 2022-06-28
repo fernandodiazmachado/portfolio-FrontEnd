@@ -1,0 +1,36 @@
+<!-- Experiencia -->
+<div class="card m-2">
+  <div class="card-header background" id="experiencia">
+    <span class="contraste_background">Experiencia</span>
+    <i
+      class="fas fa-plus position-absolute top-0 end-0 m-2 contraste_background"
+    ></i>
+  </div>
+  <div class="card mb-3 m-2" *ngFor="let experiencia of experienciaList">
+    <div class="row g-0">
+      <div class="col-md-2" style="text-align: center; margin-top: 1rem">
+        <img
+          [src]="experiencia.img"
+          class="img-fluid rounded-start img_jobs"
+          [alt]="experiencia.img_alt"
+        />
+      </div>
+      <div class="col-md-10">
+        <i class="far fa-edit position-absolute top-0 end-0"></i>
+        <div class="card-body">
+          <h5 class="card-title">{{ experiencia.company }}</h5>
+          <p class="card-text">{{ experiencia.position }}</p>
+          <p class="card-text">
+            {{ experiencia.description }}
+          </p>
+          <p class="card-text">
+            <small class="text-muted"
+              >Periodo: <time>{{ experiencia.start }}</time> -
+              <time>{{ experiencia.end }}</time></small
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

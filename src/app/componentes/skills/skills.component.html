@@ -1,0 +1,87 @@
+<!-- Hard & Soft Skills / Habilidades-->
+<div class="card m-2">
+  <div class="card-header background" id="skills">
+    <span class="contraste_background">Hard & Soft Skills</span>
+    <i
+      class="far fa-edit position-absolute top-0 end-0 contraste_background"
+    ></i>
+  </div>
+  <table class="table table-borderless m-2">
+    <thead>
+      <tr>
+        <th scope="col" class="col-2 text-bg-primary">Hard Skills Frontend</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let skill of skillsFrontendList">
+        <th scope="row" class="text-primary">{{ skill.name }}</th>
+        <td colspan="2">
+          <div class="progress m-2">
+            <div
+              class="progress-bar progress-bar-striped"
+              role="progressbar"
+              [ngStyle]="{ width: skill.progress }"
+              aria-valuenow="10"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              {{ skill.progress }}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-borderless m-2">
+    <thead>
+      <tr>
+        <th scope="col" class="col-2 text-bg-danger">Hard Skills Backend</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let skill of skillsBackendList">
+        <th scope="row" class="text-danger">{{ skill.name }}</th>
+        <td colspan="2">
+          <div class="progress m-2">
+            <div
+              class="progress-bar progress-bar-striped bg-danger"
+              role="progressbar"
+              [ngStyle]="{ width: skill.progress }"
+              aria-valuenow="10"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              {{ skill.progress }}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-borderless m-2">
+    <thead>
+      <tr>
+        <th scope="col" class="col-2 text-bg-success">Soft Skills</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let skill of softSkillsList">
+        <th scope="row" class="text-success">{{ skill.name }}</th>
+        <td colspan="2">
+          <div class="progress m-2">
+            <div
+              class="progress-bar progress-bar-striped bg-success"
+              role="progressbar"
+              [ngStyle]="{ width: skill.progress }"
+              aria-valuenow="10"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              {{ skill.progress }}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

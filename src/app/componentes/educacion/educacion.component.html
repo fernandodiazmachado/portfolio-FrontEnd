@@ -1,0 +1,83 @@
+<!-- Educacion -->
+<div class="card m-2">
+  <div class="card-header background" id="educacion">
+    <span class="contraste_background">Educacion</span>
+    <i
+      class="fas fa-plus position-absolute top-0 end-0 m-2 contraste_background"
+    ></i>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4 m-1">
+    <div class="col" *ngFor="let educacion of educacionList">
+      <div class="card">
+        <i class="far fa-edit position-absolute top-0 end-0"></i>
+        <img
+          [src]="educacion.img"
+          class="card-img-top img_education"
+          [alt]="educacion.img_alt"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ educacion.school }}</h5>
+          <p class="card-text">Titulo: {{ educacion.career }}</p>
+          <p class="card-text">Estado: {{ educacion.state }}</p>
+          <p class="card-text">
+            <small class="text-muted"
+              >Periodo: <time>{{ educacion.start }}</time> -
+              <time>{{ educacion.end }}</time></small
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col">
+      <div class="card">
+        <i class="far fa-edit position-absolute top-0 end-0"></i>
+        <img
+          src="../assets/essa.png"
+          class="card-img-top img_education"
+          alt="Logo Escuela de Suboficiales de la Armada"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Escuela de Suboficiales de la Armada</h5>
+          <p class="card-text">
+            This is a longer card with supporting text below as a natural
+            lead-in to additional content. This content is a little bit longer.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <i class="far fa-edit position-absolute top-0 end-0"></i>
+        <img
+          src="../assets/codoacodo.png"
+          class="card-img-top img_education"
+          alt="Logo Codo a Codo"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Codo a Codo</h5>
+          <p class="card-text">
+            This is a longer card with supporting text below as a natural
+            lead-in to additional content. This content is a little bit longer.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <i class="far fa-edit position-absolute top-0 end-0"></i>
+        <img
+          src="../assets/argentina_programa.jpg"
+          class="card-img-top img_education"
+          alt="Logo Argentina Programa"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Argentina Programa</h5>
+          <p class="card-text">
+            This is a longer card with supporting text below as a natural
+            lead-in to additional content. This content is a little bit longer.
+          </p>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
