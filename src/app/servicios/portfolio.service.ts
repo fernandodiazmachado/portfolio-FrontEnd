@@ -6,10 +6,33 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PortfolioService {
+  // url: string = '../../assets/data/data.json';
+  url: string = 'https://portfolio-diaz.herokuapp.com';
+  endPointBanner: string = '/personal_information';
+  endPointEducacion: string = '/education';
+  endPointExperiencia: string = '/experience';
+  endPointProyectos: string = '/proyect';
+  endPointSkill_Type: string = '/skill_type';
+  endPointSkills: string = '/skills';
+
   constructor(private http: HttpClient) {}
 
-  obtenerDatos(): Observable<any> {
-    // Este metodo futuramente se conectara con el backend para traer los datos
-    return this.http.get('../../assets/data/data.json');
+  getBanner(): Observable<any> {
+    return this.http.get(this.url + this.endPointBanner);
+  }
+  getEducacion(): Observable<any> {
+    return this.http.get(this.url + this.endPointEducacion);
+  }
+  getExperiencia(): Observable<any> {
+    return this.http.get(this.url + this.endPointExperiencia);
+  }
+  getProyectos(): Observable<any> {
+    return this.http.get(this.url + this.endPointProyectos);
+  }
+  getSkill_type(): Observable<any> {
+    return this.http.get(this.url + this.endPointSkill_Type);
+  }
+  getSkills(): Observable<any> {
+    return this.http.get(this.url + this.endPointSkills);
   }
 }

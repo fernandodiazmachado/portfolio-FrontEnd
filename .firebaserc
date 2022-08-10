@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "login-portfolio-firebase": {
+      "hosting": {
+        "portfolio-frontend": [
+          "login-portfolio-firebase"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "login-portfolio-firebase"
+  }
+}

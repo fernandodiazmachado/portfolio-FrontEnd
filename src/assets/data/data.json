@@ -1,141 +1,143 @@
-{
-  "name": "Fernando E. Díaz Machado",
-  "position": "Desarrollador Web FullStack",
-  "ubication": "Buenos Aires (Argentina)",
-  "about": "Estudiante universitario...",
-  "experience": [
-    {
-      "img": "../assets/logo_armada_argentina.png",
-      "img_alt": "Logo Armada Argentina",
-      "company": "Armada Argentina",
-      "position": "Soporte técnico",
-      "description": "En el cargo de soporte...",
-      "start": "2015",
-      "end": "2018"
-    },
-    {
-      "img": "../assets/logo_armada_argentina.png",
-      "img_alt": "Logo Armada Argentina",
-      "company": "Armada Argentina",
-      "position": "Estudiante",
-      "description": "En el cargo de estudiante...",
-      "start": "2018",
-      "end": "actualidad"
-    }
-  ],
-  "education": [
-    {
-      "img": "../assets/logo_undav.png",
-      "img_alt": "Logo Universidad Nacional de Avellaneda",
-      "school": "Universidad Nacional de Avellaneda",
-      "career": "Ingeniería en informática",
-      "state": "Cursando",
-      "start": "2015",
-      "end": "actualidad"
-    },
-    {
-      "img": "../assets/logo_essa.png",
-      "img_alt": "Logo Escuela de Suboficiales de la Armada",
-      "school": "Escuela de Suboficiales de la Armada",
-      "career": "Técnico superior en informática",
-      "state": "Finalizado",
-      "start": "2012",
-      "end": "2014"
-    },
-    {
-      "img": "../assets/logo_codo_a_codo.png",
-      "img_alt": "Logo Codo a Codo",
-      "school": "Codo a Codo",
-      "career": "Desarrollador Web FullStack",
-      "state": "Finalizado",
-      "start": "2020",
-      "end": "2022"
-    },
-    {
-      "img": "../assets/logo_arg_programa2.jpg",
-      "img_alt": "Logo Argentina Programa",
-      "school": "Argentina Programa",
-      "career": "Desarrollador Web FullStack Jr",
-      "state": "Cursando",
-      "start": "2022",
-      "end": "actualidad"
-    }
-  ],
-  "proyect": [
-    {
-      "name": "CCGSM",
-      "target": "#ccgsm",
-      "id": "ccgsm",
-      "description": "En el CCGSM ....",
-      "link": ""
-    },
-    {
-      "name": "Proyecto prueba",
-      "target": "#prueba",
-      "id": "prueba",
-      "description": "En el prueba ....",
-      "link": ""
-    },
-    {
-      "name": "Argentina Programa",
-      "target": "#arg_programa",
-      "id": "arg_programa",
-      "description": "En el Arg Prog ....",
-      "link": ""
-    }
-  ],
-  "skill_frontend": [
-    {
-      "name": "GIT",
-      "progress": "75%"
-    },
-    {
-      "name": "HTML",
-      "progress": "50%"
-    },
-    {
-      "name": "CSS",
-      "progress": "15%"
-    },
-    {
-      "name": "Bootstrap",
-      "progress": "25%"
-    },
-    {
-      "name": "JavaScript",
-      "progress": "45%"
-    },
-    {
-      "name": "TypeScript",
-      "progress": "25%"
-    }
-  ],
-  "skill_backendend": [
-    {
-      "name": "Java",
-      "progress": "75%"
-    },
-    {
-      "name": "SpringBoot",
-      "progress": "50%"
-    },
-    {
-      "name": "MySql",
-      "progress": "75%"
-    }
-  ],
-  "soft_skill": [
-    {
-      "name": "Compañerismo",
-      "progress": "95%"
-    },
-    {
-      "name": "Trabajo en equipo",
-      "progress": "55%"
-    },
-    {
-      "name": "Comunicacion",
-      "progress": "45%"
-    }
-  ]
-}
+[
+  {
+    "name": "Fernando E. Díaz Machado",
+    "position": "Desarrollador Web FullStack",
+    "ubication": "Buenos Aires (Argentina)",
+    "about": "Estudiante universitario...",
+    "experience": [
+      {
+        "img": "../assets/logo_armada_argentina.png",
+        "img_alt": "Logo Armada Argentina",
+        "company": "Armada Argentina",
+        "position": "Soporte técnico",
+        "description": "En el cargo de soporte...",
+        "start": "2015",
+        "end": "2018"
+      },
+      {
+        "img": "../assets/logo_armada_argentina.png",
+        "img_alt": "Logo Armada Argentina",
+        "company": "Armada Argentina",
+        "position": "Estudiante",
+        "description": "En el cargo de estudiante...",
+        "start": "2018",
+        "end": "actualidad"
+      }
+    ],
+    "education": [
+      {
+        "img": "../assets/logo_undav.png",
+        "img_alt": "Logo Universidad Nacional de Avellaneda",
+        "school": "Universidad Nacional de Avellaneda",
+        "career": "Ingeniería en informática",
+        "state": "Cursando",
+        "start": "2015",
+        "end": "actualidad"
+      },
+      {
+        "img": "../assets/logo_essa.png",
+        "img_alt": "Logo Escuela de Suboficiales de la Armada",
+        "school": "Escuela de Suboficiales de la Armada",
+        "career": "Técnico superior en informática",
+        "state": "Finalizado",
+        "start": "2012",
+        "end": "2014"
+      },
+      {
+        "img": "../assets/logo_codo_a_codo.png",
+        "img_alt": "Logo Codo a Codo",
+        "school": "Codo a Codo",
+        "career": "Desarrollador Web FullStack",
+        "state": "Finalizado",
+        "start": "2020",
+        "end": "2022"
+      },
+      {
+        "img": "../assets/logo_arg_programa2.jpg",
+        "img_alt": "Logo Argentina Programa",
+        "school": "Argentina Programa",
+        "career": "Desarrollador Web FullStack Jr",
+        "state": "Cursando",
+        "start": "2022",
+        "end": "actualidad"
+      }
+    ],
+    "proyect": [
+      {
+        "name": "CCGSM",
+        "target": "#ccgsm",
+        "id": "ccgsm",
+        "description": "En el CCGSM ....",
+        "link": ""
+      },
+      {
+        "name": "Proyecto prueba",
+        "target": "#prueba",
+        "id": "prueba",
+        "description": "En el prueba ....",
+        "link": ""
+      },
+      {
+        "name": "Argentina Programa",
+        "target": "#arg_programa",
+        "id": "arg_programa",
+        "description": "En el Arg Prog ....",
+        "link": ""
+      }
+    ],
+    "skill_frontend": [
+      {
+        "name": "GIT",
+        "progress": "75%"
+      },
+      {
+        "name": "HTML",
+        "progress": "50%"
+      },
+      {
+        "name": "CSS",
+        "progress": "15%"
+      },
+      {
+        "name": "Bootstrap",
+        "progress": "25%"
+      },
+      {
+        "name": "JavaScript",
+        "progress": "45%"
+      },
+      {
+        "name": "TypeScript",
+        "progress": "25%"
+      }
+    ],
+    "skill_backendend": [
+      {
+        "name": "Java",
+        "progress": "75%"
+      },
+      {
+        "name": "SpringBoot",
+        "progress": "50%"
+      },
+      {
+        "name": "MySql",
+        "progress": "75%"
+      }
+    ],
+    "soft_skill": [
+      {
+        "name": "Compañerismo",
+        "progress": "95%"
+      },
+      {
+        "name": "Trabajo en equipo",
+        "progress": "55%"
+      },
+      {
+        "name": "Comunicacion",
+        "progress": "45%"
+      }
+    ]
+  }
+]

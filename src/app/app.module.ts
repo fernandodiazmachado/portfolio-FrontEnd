@@ -12,6 +12,12 @@ import { ProyectosComponent } from './componentes/proyectos/proyectos.component'
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -23,8 +29,17 @@ import { HttpClientModule } from '@angular/common/http';
     SkillsComponent,
     ProyectosComponent,
     NavbarComponent,
+    IniciarSesionComponent,
+    PortfolioComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

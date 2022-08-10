@@ -11,8 +11,8 @@ export class AcercaDeMiComponent implements OnInit {
   constructor(private datosPortfolio: PortfolioService) {}
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe((data) => {
-      this.miPortfolio = data;
+    this.datosPortfolio.getBanner().subscribe((data) => {
+      this.miPortfolio = data[0];
     });
   }
 }
