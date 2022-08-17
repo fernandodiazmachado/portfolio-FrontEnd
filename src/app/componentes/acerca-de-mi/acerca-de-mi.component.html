@@ -2,13 +2,73 @@
 <div class="card m-2">
   <div class="card-header background" id="acerca_de_mi">
     <span class="contraste_background"> Acerca de mi</span>
-    <i
-      class="far fa-edit position-absolute top-0 end-0 contraste_background"
-    ></i>
+
+    <button
+      class="position-absolute top-0 end-0"
+      style="background-color: transparent; border-color: transparent"
+      data-bs-toggle="modal"
+      data-bs-target="#updateModal"
+    >
+      <!-- El open modal quedó afuera del buton para poder comentarlo -->
+      <!-- (click)="onOpenModal(aboutMe)" -->
+
+      <i class="far fa-edit contraste_background"></i>
+    </button>
   </div>
   <div class="card-body">
     <p class="card-text">
-      {{ miPortfolio.about }}
+      {{ aboutMe.about }}
     </p>
+  </div>
+</div>
+
+<!-- INICIO MODAL -->
+
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  aria-labelledby="updateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Acerca de Mi:</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdateAboutMe(updateForm)">
+          <div class="mb-3">
+            <textarea
+              class="form-control"
+              id="message-text"
+              [(ngModel)]="aboutMe.about"
+              name="about"
+              >{{ aboutMe.about }}</textarea
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          id="gtn-save"
+          (click)="onUpdateAboutMe(updateForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
   </div>
 </div>

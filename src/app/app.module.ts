@@ -14,10 +14,10 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
