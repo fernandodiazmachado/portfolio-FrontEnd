@@ -2,9 +2,14 @@
 <div class="card m-2">
   <div class="card-header background" id="experiencia">
     <span class="contraste_background">Experiencia</span>
-    <i
-      class="fas fa-plus position-absolute top-0 end-0 m-2 contraste_background"
-    ></i>
+    <button
+      class="position-absolute top-0 end-0"
+      style="background-color: transparent; border-color: transparent"
+      data-bs-toggle="modal"
+      data-bs-target="#addExperiencieModal"
+    >
+      <i class="fas fa-plus contraste_background"></i>
+    </button>
   </div>
   <div class="card mb-3 m-2" *ngFor="let experiencia of experienciaList">
     <div class="row g-0">
@@ -16,7 +21,15 @@
         />
       </div>
       <div class="col-md-10">
-        <i class="far fa-edit position-absolute top-0 end-0"></i>
+        <button
+          class="position-absolute top-0 end-0"
+          style="background-color: transparent; border-color: transparent"
+          data-bs-toggle="modal"
+          data-bs-target="#updateExperiencieModal"
+          (click)="setExperienceOnMode('update', experiencia)"
+        >
+          <i class="far fa-edit"></i>
+        </button>
         <div class="card-body">
           <h5 class="card-title">{{ experiencia.company }}</h5>
           <p class="card-text">{{ experiencia.position }}</p>
@@ -26,10 +39,213 @@
           <p class="card-text">
             <small class="text-muted"
               >Periodo: <time>{{ experiencia.start }}</time> -
-              <time>{{ experiencia.end }}</time></small
+              <time *ngIf="experiencia.end != null; else actualidad">{{
+                experiencia.end
+              }}</time></small
             >
+            <ng-template #actualidad>actualidad</ng-template>
           </p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INICIO MODAL -->
+<!-- MODAL ADD EXPERIENCIA -->
+<div
+  class="modal fade"
+  id="addExperiencieModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="experiencieModal">Agregar Experiencia</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddExperience(addForm)">
+          <div class="mb-3">
+            <label for="company" class="col-form-label">Compañía:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              ngModel
+              name="company"
+              placeholder="Nombre de la compañía"
+              required
+            />
+            <label for="position" class="col-form-label">Posición:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              ngModel
+              name="position"
+            />
+            <label for="start" class="col-form-label">Fecha de inicio</label>
+            <input
+              type="text"
+              class="form-control"
+              id="start"
+              ngModel
+              name="start"
+              placeholder="Año de ingreso - Solo valor numerico"
+            />
+            <label for="end" class="col-form-label"
+              >Fecha de culminación:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Si lo deja vacío, se cargara como experiencia actual"
+              id="end"
+              ngModel
+              name="end"
+            />
+            <label for="img" class="col-form-label">URL de Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              ngModel
+              name="img"
+            />
+            <label for="img_alt" class="col-form-label"
+              >Nombre para la imagen:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="img_alt"
+              ngModel
+              name="img_alt"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onAddExperience(addForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL UPDATE EXPERIENCIA -->
+
+<div
+  class="modal fade"
+  id="updateExperiencieModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateExperiencieModal-title">
+          Modificar Experiencia
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdateExperience(updateForm)">
+          <div class="mb-3">
+            <label for="company" class="col-form-label">Compañía:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              placeholder="Nombre de la compañía"
+              ngModel="{{ updateExperience?.company }}"
+              name="company"
+            />
+
+            <label for="position" class="col-form-label">Posición:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              ngModel="{{ updateExperience?.position }}"
+              name="position"
+            />
+            <label for="start" class="col-form-label">Fecha de inicio</label>
+            <input
+              type="text"
+              class="form-control"
+              id="start"
+              placeholder="Año de ingreso - Solo valor numerico"
+              ngModel="{{ updateExperience?.start }}"
+              name="start"
+            />
+            <label for="end" class="col-form-label"
+              >Fecha de culminación:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Si lo deja vacío, se cargara como experiencia actual"
+              id="end"
+              ngModel="{{ updateExperience?.end }}"
+              name="end"
+            />
+            <label for="img" class="col-form-label">URL de Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              ngModel="{{ updateExperience?.img }}"
+              name="img"
+            />
+            <label for="img_alt" class="col-form-label"
+              >Nombre para la imagen:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="img_alt"
+              ngModel="{{ updateExperience?.img_alt }}"
+              name="img_alt"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onUpdateExperience(updateForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
       </div>
     </div>
   </div>

@@ -33,6 +33,15 @@ export class PortfolioService {
   getExperiencia(): Observable<any> {
     return this.http.get(this.url + this.endPointExperiencia);
   }
+  addExperiencia(experience: any): Observable<any> {
+    return this.http.post(this.url + this.endPointExperiencia, experience);
+  }
+  updateExperiencia(experience: any): Observable<any> {
+    return this.http.put(
+      this.url + this.endPointExperiencia + '/' + experience.id,
+      experience
+    );
+  }
   getProyectos(): Observable<any> {
     return this.http.get(this.url + this.endPointProyectos);
   }
