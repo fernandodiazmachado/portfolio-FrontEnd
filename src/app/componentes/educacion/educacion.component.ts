@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from '../../servicios/portfolio.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-educacion',
@@ -20,6 +21,19 @@ export class EducacionComponent implements OnInit {
 
   public setUpdateEducation(educacion: any) {
     this.updateEducacion = educacion;
+  }
+
+  public onAddEducation(addForm: NgForm): void {
+    console.log(addForm);
+    this.datosPortfolio.addEducation(addForm).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.ngOnInit();
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      },
+    });
   }
 
   public onUpdateEducation(modifiedEducation: any) {

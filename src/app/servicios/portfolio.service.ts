@@ -31,6 +31,10 @@ export class PortfolioService {
     return this.http.get(this.url + this.endPointEducacion);
   }
 
+  addEducation(education: any): Observable<any> {
+    return this.http.post(this.url + this.endPointEducacion, education);
+  }
+
   updateEducation(education: any): Observable<any> {
     return this.http.put(
       this.url + this.endPointEducacion + '/' + education.id,
