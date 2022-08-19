@@ -11,7 +11,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ExperienciaComponent implements OnInit {
   experienciaList: any;
   updateExperience: any;
-  deleteExperience: any;
   constructor(private datosPortfolio: PortfolioService) {}
 
   ngOnInit(): void {
@@ -41,6 +40,17 @@ export class ExperienciaComponent implements OnInit {
   public onUpdateExperience(experience: any) {
     experience.id = this.updateExperience.id;
     this.datosPortfolio.updateExperiencia(experience).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.ngOnInit();
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      },
+    });
+  }
+  public onDeleteExperience(experience: any) {
+    this.datosPortfolio.deleteExperiencia(experience).subscribe({
       next: (data) => {
         console.log(data);
         this.ngOnInit();

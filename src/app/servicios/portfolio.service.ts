@@ -42,6 +42,12 @@ export class PortfolioService {
       experience
     );
   }
+  deleteExperiencia(experience: any): Observable<any> {
+    return this.http.delete(
+      this.url + this.endPointExperiencia + '/' + experience.id,
+      experience
+    );
+  }
   getProyectos(): Observable<any> {
     return this.http.get(this.url + this.endPointProyectos);
   }

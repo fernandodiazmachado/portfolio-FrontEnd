@@ -28,7 +28,14 @@
           data-bs-target="#updateExperiencieModal"
           (click)="setExperienceOnMode('update', experiencia)"
         >
-          <i class="far fa-edit"></i>
+          <i class="far fa-edit" style="color: blue"></i>
+        </button>
+        <button
+          class="position-absolute top-50 end-0"
+          style="background-color: transparent; border-color: transparent"
+          (click)="onDeleteExperience(experiencia)"
+        >
+          <i class="far fa-trash-alt" style="color: red"></i>
         </button>
         <div class="card-body">
           <h5 class="card-title">{{ experiencia.company }}</h5>

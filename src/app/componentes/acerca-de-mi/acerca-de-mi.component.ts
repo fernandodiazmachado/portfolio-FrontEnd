@@ -9,8 +9,8 @@ import { PortfolioService } from '../../servicios/portfolio.service';
   styleUrls: ['./acerca-de-mi.component.css'],
 })
 export class AcercaDeMiComponent implements OnInit {
-  public aboutMe: any;
-  public updateAboutMe: any;
+  aboutMe: any;
+  updateAboutMe: any;
   constructor(private datosPortfolio: PortfolioService) {}
 
   ngOnInit(): void {
@@ -19,15 +19,15 @@ export class AcercaDeMiComponent implements OnInit {
     });
   }
 
-  // public onOpenModal(aboutMe: any) {
-  //   console.log('abriendo modal????');
-  // }
-
+  public setAboutMeOnMode() {
+    this.updateAboutMe = this.aboutMe;
+  }
   public onUpdateAboutMe(aboutMe: any): void {
+    console.log(aboutMe);
+    console.log(this.aboutMe);
     this.aboutMe.about = aboutMe.about;
-    // console.log(aboutMe.about);
-    // console.log(this.aboutMe);
-    // document.getElementById('updateForm')?.click();
+    console.log(this.aboutMe);
+
     this.datosPortfolio.updateAcercaDeMi(this.aboutMe).subscribe({
       next: (data) => {
         console.log(data);
@@ -38,4 +38,7 @@ export class AcercaDeMiComponent implements OnInit {
       },
     });
   }
+  // public restartAboutMeForm(form: NgForm) {
+  //   form.reset();
+  // }
 }

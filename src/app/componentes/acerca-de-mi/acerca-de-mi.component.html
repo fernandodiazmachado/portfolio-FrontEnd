@@ -8,6 +8,7 @@
       style="background-color: transparent; border-color: transparent"
       data-bs-toggle="modal"
       data-bs-target="#updateModal"
+      (click)="setAboutMeOnMode()"
     >
       <i class="far fa-edit contraste_background"></i>
     </button>
@@ -45,15 +46,16 @@
             <textarea
               class="form-control"
               id="message-text"
-              [(ngModel)]="aboutMe.about"
+              ngModel="{{ updateAboutMe?.about }}"
               name="about"
-              >{{ aboutMe.about }}</textarea
+              >{{ updateAboutMe?.about }}</textarea
             >
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <!-- (click)="restartAboutMeForm(updateForm)" -->
           Cancelar
         </button>
         <button
