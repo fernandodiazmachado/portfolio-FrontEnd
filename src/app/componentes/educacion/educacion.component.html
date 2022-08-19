@@ -2,14 +2,36 @@
 <div class="card m-2">
   <div class="card-header background" id="educacion">
     <span class="contraste_background">Educacion</span>
-    <i
-      class="fas fa-plus position-absolute top-0 end-0 m-2 contraste_background"
-    ></i>
+    <button
+      class="position-absolute top-0 end-0"
+      style="background-color: transparent; border-color: transparent"
+      data-bs-toggle="modal"
+      data-bs-target="#addEducationModal"
+    >
+      <i class="fas fa-plus contraste_background"></i>
+    </button>
   </div>
   <div class="row row-cols-1 row-cols-md-3 g-4 m-1">
     <div class="col" *ngFor="let educacion of educacionList">
       <div class="card">
-        <i class="far fa-edit position-absolute top-0 end-0"></i>
+        <button
+          class="position-absolute top-0 end-80"
+          style="background-color: transparent; border-color: transparent"
+          data-bs-toggle="modal"
+          data-bs-target="#updateEducacionModal"
+          (click)="setUpdateEducation(educacion)"
+        >
+          <i class="far fa-edit" style="color: blue"></i>
+        </button>
+
+        <button
+          class="position-absolute top-0 end-0"
+          style="background-color: transparent; border-color: transparent"
+          (click)="onDeleteEducation(educacion)"
+        >
+          <i class="far fa-trash-alt" style="color: red"></i>
+        </button>
+
         <img
           [src]="educacion.img"
           class="card-img-top img_education"
@@ -28,56 +50,113 @@
         </div>
       </div>
     </div>
-    <!-- <div class="col">
-      <div class="card">
-        <i class="far fa-edit position-absolute top-0 end-0"></i>
-        <img
-          src="../assets/essa.png"
-          class="card-img-top img_education"
-          alt="Logo Escuela de Suboficiales de la Armada"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Escuela de Suboficiales de la Armada</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
-        </div>
+  </div>
+</div>
+
+<!-- MODAL UPDATE EDUCACION -->
+
+<div
+  class="modal fade"
+  id="updateEducacionModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateEducacionModal-title">
+          Modificar Educacion
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdateEducation(updateForm)">
+          <div class="mb-3">
+            <label for="school" class="col-form-label">Institución:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="school"
+              ngModel="{{ updateEducacion?.school }}"
+              name="school"
+            />
+
+            <label for="career" class="col-form-label">Carrera o curso:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="career"
+              ngModel="{{ updateEducacion?.career }}"
+              name="career"
+            />
+            <label for="state" class="col-form-label">Estado:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="state"
+              ngModel="{{ updateEducacion?.state }}"
+              name="state"
+            />
+            <label for="start" class="col-form-label">Fecha de inicio</label>
+            <input
+              type="text"
+              class="form-control"
+              id="start"
+              placeholder="Año de ingreso - Solo valor numerico"
+              ngModel="{{ updateEducacion?.start }}"
+              name="start"
+            />
+            <label for="end" class="col-form-label"
+              >Fecha de culminación:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Si lo deja vacío, se cargara como experiencia actual"
+              id="end"
+              ngModel="{{ updateEducacion?.end }}"
+              name="end"
+            />
+            <label for="img" class="col-form-label">URL de Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              ngModel="{{ updateEducacion?.img }}"
+              name="img"
+            />
+            <label for="img_alt" class="col-form-label"
+              >Nombre para la imagen:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="img_alt"
+              ngModel="{{ updateEducacion?.img_alt }}"
+              name="img_alt"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onUpdateEducation(updateForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
       </div>
     </div>
-    <div class="col">
-      <div class="card">
-        <i class="far fa-edit position-absolute top-0 end-0"></i>
-        <img
-          src="../assets/codoacodo.png"
-          class="card-img-top img_education"
-          alt="Logo Codo a Codo"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Codo a Codo</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <i class="far fa-edit position-absolute top-0 end-0"></i>
-        <img
-          src="../assets/argentina_programa.jpg"
-          class="card-img-top img_education"
-          alt="Logo Argentina Programa"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Argentina Programa</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
-        </div>
-      </div>
-    </div> -->
   </div>
 </div>

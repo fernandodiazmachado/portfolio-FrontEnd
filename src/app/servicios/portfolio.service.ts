@@ -30,6 +30,20 @@ export class PortfolioService {
   getEducacion(): Observable<any> {
     return this.http.get(this.url + this.endPointEducacion);
   }
+
+  updateEducation(education: any): Observable<any> {
+    return this.http.put(
+      this.url + this.endPointEducacion + '/' + education.id,
+      education
+    );
+  }
+
+  deleteEducacion(education: any): Observable<any> {
+    return this.http.delete(
+      this.url + this.endPointEducacion + '/' + education.id,
+      education
+    );
+  }
   getExperiencia(): Observable<any> {
     return this.http.get(this.url + this.endPointExperiencia);
   }
