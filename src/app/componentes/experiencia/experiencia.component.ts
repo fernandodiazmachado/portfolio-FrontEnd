@@ -19,10 +19,8 @@ export class ExperienciaComponent implements OnInit {
     });
   }
 
-  public setExperienceOnMode(mode: String, experiencia: any) {
-    if (mode === 'update') {
-      this.updateExperience = experiencia;
-    }
+  public setUpdateExperience(experiencia: any) {
+    this.updateExperience = experiencia;
   }
 
   public onAddExperience(addForm: NgForm) {
