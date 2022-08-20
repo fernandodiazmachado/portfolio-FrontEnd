@@ -75,4 +75,21 @@ export class PortfolioService {
   getSkills(): Observable<any> {
     return this.http.get(this.url + this.endPointSkills);
   }
+  addSkills(skill: any): Observable<any> {
+    return this.http.post(this.url + this.endPointSkills, skill);
+  }
+
+  updateSkill(skill: any): Observable<any> {
+    return this.http.put(
+      this.url + this.endPointSkills + '/' + skill.id,
+      skill
+    );
+  }
+
+  deleteSkill(skill: any): Observable<any> {
+    return this.http.delete(
+      this.url + this.endPointSkills + '/' + skill.id,
+      skill
+    );
+  }
 }

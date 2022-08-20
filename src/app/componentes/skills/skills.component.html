@@ -2,9 +2,14 @@
 <div class="card m-2">
   <div class="card-header background" id="skills">
     <span class="contraste_background">Hard & Soft Skills</span>
-    <i
-      class="far fa-edit position-absolute top-0 end-0 contraste_background"
-    ></i>
+    <button
+      class="position-absolute top-0 end-0"
+      style="background-color: transparent; border-color: transparent"
+      data-bs-toggle="modal"
+      data-bs-target="#addSkillModal"
+    >
+      <i class="fas fa-plus contraste_background"></i>
+    </button>
   </div>
   <table class="table table-borderless m-2">
     <thead>
@@ -15,6 +20,15 @@
     <tbody>
       <tr *ngFor="let skill of skillsFrontendList">
         <th scope="row" class="text-primary">{{ skill.name }}</th>
+        <button
+          class="position-absolute end-0"
+          style="background-color: transparent; border-color: transparent"
+          data-bs-toggle="modal"
+          data-bs-target="#updateSkillModal"
+          (click)="setUpdateSkill(skill)"
+        >
+          <i class="far fa-edit" style="color: black"></i>
+        </button>
         <td colspan="2">
           <div class="progress m-2">
             <div
@@ -41,6 +55,15 @@
     <tbody>
       <tr *ngFor="let skill of skillsBackendList">
         <th scope="row" class="text-danger">{{ skill.name }}</th>
+        <button
+          class="position-absolute end-0"
+          style="background-color: transparent; border-color: transparent"
+          data-bs-toggle="modal"
+          data-bs-target="#updateSkillModal"
+          (click)="setUpdateSkill(skill)"
+        >
+          <i class="far fa-edit" style="color: black"></i>
+        </button>
         <td colspan="2">
           <div class="progress m-2">
             <div
@@ -67,6 +90,15 @@
     <tbody>
       <tr *ngFor="let skill of softSkillsList">
         <th scope="row" class="text-success">{{ skill.name }}</th>
+        <button
+          class="position-absolute end-0"
+          style="background-color: transparent; border-color: transparent"
+          data-bs-toggle="modal"
+          data-bs-target="#updateSkillModal"
+          (click)="setUpdateSkill(skill)"
+        >
+          <i class="far fa-edit" style="color: black"></i>
+        </button>
         <td colspan="2">
           <div class="progress m-2">
             <div
@@ -84,4 +116,152 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- INICIO MODAL -->
+
+<!-- MODAL ADD SKILL -->
+<div
+  class="modal fade"
+  id="addSkillModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="skillModal">Agregar Skill</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm)">
+          <div class="mb-3">
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelectTypeSkill"
+                >Tipo de Skill</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelectTypeSkill"
+                (change)="onChangeSelect($event)"
+              >
+                <option
+                  *ngFor="let skill of skillsTypeList"
+                  [selected]="skill.name === selectedValue"
+                  [value]="skill.id"
+                  ngModel
+                  name="id_skills_type"
+                >
+                  {{ skill.name }}
+                </option>
+                <!-- <option value="1">Hard Skills Frontend</option>
+              <option value="2">Hard Skills Backend</option>
+              <option value="3">Soft Skills</option> -->
+              </select>
+            </div>
+            <label for="name" class="col-form-label">Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              ngModel
+              name="name"
+            />
+            <label for="progress" class="col-form-label">Progreso:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="progress"
+              ngModel
+              name="progress"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onAddSkill(addForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL UPDATE SKILL -->
+<div
+  class="modal fade"
+  id="updateSkillModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="skillModal">Editar/Eliminar Skill</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdateSkill(updateForm)">
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              ngModel="{{ skillToUpdate?.name }}"
+              name="name"
+            />
+            <label for="progress" class="col-form-label">Progreso:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="progress"
+              ngModel="{{ skillToUpdate?.progress }}"
+              name="progress"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="onDeleteSkill(skillToUpdate)"
+          data-bs-dismiss="modal"
+        >
+          Eliminar
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onUpdateSkill(updateForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
