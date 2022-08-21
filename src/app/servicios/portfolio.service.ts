@@ -69,6 +69,14 @@ export class PortfolioService {
   getProyectos(): Observable<any> {
     return this.http.get(this.url + this.endPointProyectos);
   }
+
+  deleteProyect(proyect: any): Observable<any> {
+    return this.http.delete(
+      this.url + this.endPointProyectos + '/' + proyect.id,
+      proyect
+    );
+  }
+
   getSkill_type(): Observable<any> {
     return this.http.get(this.url + this.endPointSkill_Type);
   }
