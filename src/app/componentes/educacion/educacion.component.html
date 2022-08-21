@@ -44,8 +44,11 @@
           <p class="card-text">
             <small class="text-muted"
               >Periodo: <time>{{ educacion.start }}</time> -
-              <time>{{ educacion.end }}</time></small
+              <time *ngIf="educacion.end != null; else actualidad">{{
+                educacion.end
+              }}</time></small
             >
+            <ng-template #actualidad>actualidad</ng-template>
           </p>
         </div>
       </div>
