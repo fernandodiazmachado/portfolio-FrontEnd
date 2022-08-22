@@ -70,6 +70,16 @@ export class PortfolioService {
     return this.http.get(this.url + this.endPointProyectos);
   }
 
+  addProyectos(proyect: any): Observable<any> {
+    return this.http.post(this.url + this.endPointProyectos, proyect);
+  }
+  updateProyectos(proyect: any): Observable<any> {
+    return this.http.put(
+      this.url + this.endPointProyectos + '/' + proyect.id,
+      proyect
+    );
+  }
+
   deleteProyect(proyect: any): Observable<any> {
     return this.http.delete(
       this.url + this.endPointProyectos + '/' + proyect.id,

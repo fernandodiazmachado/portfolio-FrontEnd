@@ -19,8 +19,8 @@
           style="background-color: transparent; border-color: transparent"
           data-bs-toggle="modal"
           data-bs-target="#updateProyectModal"
+          (click)="setUpdateProyect(proyect)"
         >
-          <!-- (click)="setUpdateEducation(educacion)" -->
           <i class="far fa-edit" style="color: blue"></i>
         </button>
 
@@ -38,6 +38,165 @@
             >Ir a repositorio</a
           >
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INICIO MODAL -->
+<!-- MODAL ADD PROYECT -->
+<div
+  class="modal fade"
+  id="addProyectModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="proyectModal">Agregar Proyecto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddProyect(addForm)">
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Titulo:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              ngModel
+              name="name"
+              placeholder="Titulo del proyecto"
+              required
+            />
+            <label for="description" class="col-form-label">Descripción:</label>
+            <textarea
+              class="form-control"
+              id="message-text"
+              name="description"
+              placeholder="Ingrese descripción del proyeto"
+            ></textarea>
+            <label for="img" class="col-form-label">URL de Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              ngModel
+              name="img"
+            />
+            <label for="img_alt" class="col-form-label"
+              >Nombre para la imagen:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="img_alt"
+              ngModel
+              name="img_alt"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onAddProyect(addForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL UPDATE PROYECTOS -->
+
+<div
+  class="modal fade"
+  id="updateProyectModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateProyectModal-title">
+          Editar Proyecto
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdateProyect(updateForm)">
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Titulo:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Nombre de la compañía"
+              ngModel="{{ updateProyect?.name }}"
+              name="name"
+            />
+
+            <label for="description" class="col-form-label">Descripción:</label>
+            <textarea
+              class="form-control"
+              id="message-text"
+              ngModel="{{ updateProyect?.description }}"
+              name="description"
+              >{{ updateProyect?.description }}</textarea
+            >
+            <label for="img" class="col-form-label">URL de Imagen:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="img"
+              ngModel="{{ updateProyect?.img }}"
+              name="img"
+            />
+            <label for="img_alt" class="col-form-label"
+              >Nombre para la imagen:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="img_alt"
+              ngModel="{{ updateProyect?.img_alt }}"
+              name="img_alt"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onUpdateProyect(updateForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
       </div>
     </div>
   </div>
