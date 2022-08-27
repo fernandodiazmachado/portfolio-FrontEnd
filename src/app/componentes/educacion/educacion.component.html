@@ -136,8 +136,8 @@
               name="img"
             />
             <label for="img_alt" class="col-form-label"
-              >Nombre para la imagen:</label
-            >
+              >Nombre alternativo para imagen:
+            </label>
             <input
               type="text"
               class="form-control"
@@ -145,6 +145,10 @@
               ngModel
               name="img_alt"
             />
+            <span class="text-muted"
+              >Este nombre aparecerá en caso de que no se cargue correctamente
+              la imagen</span
+            >
           </div>
         </form>
       </div>
@@ -253,6 +257,10 @@
               ngModel="{{ updateEducacion?.img_alt }}"
               name="img_alt"
             />
+            <span class="text-muted"
+              >Este nombre aparecerá en caso de que no se cargue correctamente
+              la imagen</span
+            >
           </div>
         </form>
       </div>

@@ -133,7 +133,7 @@
               name="img"
             />
             <label for="img_alt" class="col-form-label"
-              >Nombre para la imagen:</label
+              >Nombre alternativo para imagen:</label
             >
             <input
               type="text"
@@ -142,6 +142,10 @@
               ngModel
               name="img_alt"
             />
+            <span class="text-muted"
+              >Este nombre aparecerá en caso de que no se cargue correctamente
+              la imagen</span
+            >
           </div>
         </form>
       </div>
@@ -234,7 +238,7 @@
               name="img"
             />
             <label for="img_alt" class="col-form-label"
-              >Nombre para la imagen:</label
+              >Nombre alternativo para imagen:</label
             >
             <input
               type="text"
@@ -243,6 +247,10 @@
               ngModel="{{ updateExperience?.img_alt }}"
               name="img_alt"
             />
+            <span class="text-muted"
+              >Este nombre aparecerá en caso de que no se cargue correctamente
+              la imagen</span
+            >
           </div>
         </form>
       </div>

@@ -87,10 +87,10 @@ export class BannerComponent implements OnInit {
       .catch((error) => console.log(error));
   }
 
-  getImages() {
+  async getImages() {
     const imagesRef = ref(this.storage, `profilePicture`);
 
-    listAll(imagesRef)
+    await listAll(imagesRef)
       .then((response) => {
         for (let item of response.items) {
           if (item.name === this.miPortfolio.img_perfil) {
