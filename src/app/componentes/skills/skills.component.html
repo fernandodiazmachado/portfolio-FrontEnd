@@ -2,14 +2,16 @@
 <div class="card m-2">
   <div class="card-header background" id="skills">
     <span class="contraste_background">Hard & Soft Skills</span>
-    <button
-      class="position-absolute top-0 end-0"
-      style="background-color: transparent; border-color: transparent"
-      data-bs-toggle="modal"
-      data-bs-target="#addSkillModal"
-    >
-      <i class="fas fa-plus contraste_background"></i>
-    </button>
+    <span *ngIf="estaLogueado()">
+      <button
+        class="position-absolute top-0 end-0"
+        style="background-color: transparent; border-color: transparent"
+        data-bs-toggle="modal"
+        data-bs-target="#addSkillModal"
+      >
+        <i class="fas fa-plus contraste_background"></i>
+      </button>
+    </span>
   </div>
   <table class="table table-borderless m-2">
     <thead>
@@ -20,15 +22,17 @@
     <tbody>
       <tr *ngFor="let skill of skillsFrontendList">
         <th scope="row" class="text-primary">{{ skill.name }}</th>
-        <button
-          class="position-absolute end-0"
-          style="background-color: transparent; border-color: transparent"
-          data-bs-toggle="modal"
-          data-bs-target="#updateSkillModal"
-          (click)="setUpdateSkill(skill)"
-        >
-          <i class="far fa-edit" style="color: black"></i>
-        </button>
+        <span *ngIf="estaLogueado()">
+          <button
+            class="position-absolute end-0"
+            style="background-color: transparent; border-color: transparent"
+            data-bs-toggle="modal"
+            data-bs-target="#updateSkillModal"
+            (click)="setUpdateSkill(skill)"
+          >
+            <i class="far fa-edit" style="color: black"></i>
+          </button>
+        </span>
         <td colspan="2">
           <div class="progress m-2">
             <div
@@ -55,15 +59,17 @@
     <tbody>
       <tr *ngFor="let skill of skillsBackendList">
         <th scope="row" class="text-danger">{{ skill.name }}</th>
-        <button
-          class="position-absolute end-0"
-          style="background-color: transparent; border-color: transparent"
-          data-bs-toggle="modal"
-          data-bs-target="#updateSkillModal"
-          (click)="setUpdateSkill(skill)"
-        >
-          <i class="far fa-edit" style="color: black"></i>
-        </button>
+        <span *ngIf="estaLogueado()">
+          <button
+            class="position-absolute end-0"
+            style="background-color: transparent; border-color: transparent"
+            data-bs-toggle="modal"
+            data-bs-target="#updateSkillModal"
+            (click)="setUpdateSkill(skill)"
+          >
+            <i class="far fa-edit" style="color: black"></i>
+          </button>
+        </span>
         <td colspan="2">
           <div class="progress m-2">
             <div
@@ -90,15 +96,17 @@
     <tbody>
       <tr *ngFor="let skill of softSkillsList">
         <th scope="row" class="text-success">{{ skill.name }}</th>
-        <button
-          class="position-absolute end-0"
-          style="background-color: transparent; border-color: transparent"
-          data-bs-toggle="modal"
-          data-bs-target="#updateSkillModal"
-          (click)="setUpdateSkill(skill)"
-        >
-          <i class="far fa-edit" style="color: black"></i>
-        </button>
+        <span *ngIf="estaLogueado()">
+          <button
+            class="position-absolute end-0"
+            style="background-color: transparent; border-color: transparent"
+            data-bs-toggle="modal"
+            data-bs-target="#updateSkillModal"
+            (click)="setUpdateSkill(skill)"
+          >
+            <i class="far fa-edit" style="color: black"></i>
+          </button>
+        </span>
         <td colspan="2">
           <div class="progress m-2">
             <div

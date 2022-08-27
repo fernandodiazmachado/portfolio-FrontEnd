@@ -6,19 +6,24 @@ import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/portfolio' },
-  {
-    path: 'portfolio',
-    component: PortfolioComponent,
-    ...canActivate(() => redirectUnauthorizedTo(['/iniciar-sesion'])),
-  },
+  { path: 'portfolio', component: PortfolioComponent },
   { path: 'iniciar-sesion', component: IniciarSesionComponent },
-  // { path: '', redirectTo: 'iniciar-sesion', pathMatch: 'full' },
-  // { path: 'portfolio', component: PortfolioComponent },
-  // { path: 'iniciar-sesion', component: IniciarSesionComponent },
+  //Código para redireccionar si no se ha iniciado sesion.
+  // {
+  //   path: 'portfolio-admin',
+  //   component: PortfolioAdminComponent,
+  //   ...canActivate(() => redirectUnauthorizedTo(['/iniciar-sesion'])),
+  // }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      scrollOffset: [0, 64],
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

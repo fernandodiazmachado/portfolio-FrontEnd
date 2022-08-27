@@ -1,21 +1,22 @@
 <!-- Acerca de mi -->
-<div class="card m-2">
-  <div class="card-header background" id="acerca_de_mi">
+<div class="card m-2" id="acerca_de_mi">
+  <div class="card-header background">
     <span class="contraste_background"> Acerca de mi</span>
-
-    <button
-      class="position-absolute top-0 end-0"
-      style="background-color: transparent; border-color: transparent"
-      data-bs-toggle="modal"
-      data-bs-target="#updateModal"
-      (click)="setAboutMeOnMode()"
-    >
-      <i class="far fa-edit contraste_background"></i>
-    </button>
+    <span *ngIf="estaLogueado()">
+      <button
+        class="position-absolute top-0 end-0"
+        style="background-color: transparent; border-color: transparent"
+        data-bs-toggle="modal"
+        data-bs-target="#updateModal"
+        (click)="setAboutMeOnMode()"
+      >
+        <i class="far fa-edit contraste_background"></i>
+      </button>
+    </span>
   </div>
   <div class="card-body">
     <p class="card-text">
-      {{ aboutMe.about }}
+      {{ aboutMe.description }}
     </p>
   </div>
 </div>
@@ -46,16 +47,15 @@
             <textarea
               class="form-control"
               id="message-text"
-              ngModel="{{ updateAboutMe?.about }}"
-              name="about"
-              >{{ updateAboutMe?.about }}</textarea
+              ngModel="{{ updateAboutMe?.description }}"
+              name="description"
+              >{{ updateAboutMe?.description }}</textarea
             >
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          <!-- (click)="restartAboutMeForm(updateForm)" -->
           Cancelar
         </button>
         <button

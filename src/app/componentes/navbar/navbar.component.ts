@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
@@ -9,6 +9,9 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  @Input() stateUser: any;
+  @Input() currentRoute: any;
+
   constructor(
     private autenticacionService: AutenticacionService,
     private router: Router
@@ -20,9 +23,24 @@ export class NavbarComponent implements OnInit {
     this.autenticacionService
       .logout()
       .then(() => {
-        console.log('ejecutando boton de logout');
-        this.router.navigate(['/iniciar-sesion']);
+        this.router.navigate(['/portfolio']);
       })
-      .catch((error) => console.log('error de looginnnnnnnnnnnn'));
+      .catch((error) => console.log('error de login'));
+  }
+
+  onRedirectTo(url: string) {
+    this.router.navigate([url]);
+  }
+
+  noEstaLogueado() {
+    if (
+      this.stateUser === null ||
+      typeof this.stateUser === undefined ||
+      this.stateUser.auth.currentUser === null
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

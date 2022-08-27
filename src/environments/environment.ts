@@ -4,12 +4,13 @@
 
 export const environment = {
   firebase: {
-    projectId: 'login-portfolio-firebase',
-    appId: '1:824395799396:web:36c7b932d122f6c18cf871',
-    storageBucket: 'login-portfolio-firebase.appspot.com',
-    apiKey: 'AIzaSyDxiX0ydUZ8Q6cikp7wAKQdYVkUQ89FNPA',
-    authDomain: 'login-portfolio-firebase.firebaseapp.com',
-    messagingSenderId: '824395799396',
+    projectId: 'diaz-machado',
+    appId: '1:921115473328:web:ab1b4e802487f461725275',
+    storageBucket: 'diaz-machado.appspot.com',
+    locationId: 'southamerica-east1',
+    apiKey: 'AIzaSyBa2hXM04NsRt0n6VKb-gZ1De6DxXYKObo',
+    authDomain: 'diaz-machado.firebaseapp.com',
+    messagingSenderId: '921115473328',
   },
   production: false
 };

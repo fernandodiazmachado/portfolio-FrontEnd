@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PortfolioService } from '../../servicios/portfolio.service';
 
@@ -9,6 +9,7 @@ import { PortfolioService } from '../../servicios/portfolio.service';
   styleUrls: ['./acerca-de-mi.component.css'],
 })
 export class AcercaDeMiComponent implements OnInit {
+  @Input() stateUser: any;
   aboutMe: any;
   updateAboutMe: any;
   constructor(private datosPortfolio: PortfolioService) {}
@@ -23,12 +24,8 @@ export class AcercaDeMiComponent implements OnInit {
     this.updateAboutMe = this.aboutMe;
   }
   public onUpdateAboutMe(aboutMe: any): void {
-    console.log(aboutMe);
-    console.log(this.aboutMe);
-    this.aboutMe.about = aboutMe.about;
-    console.log(this.aboutMe);
-
-    this.datosPortfolio.updateAcercaDeMi(this.aboutMe).subscribe({
+    aboutMe.id = this.updateAboutMe.id;
+    this.datosPortfolio.updateAcercaDeMi(aboutMe).subscribe({
       next: (data) => {
         console.log(data);
         this.ngOnInit();
@@ -38,7 +35,17 @@ export class AcercaDeMiComponent implements OnInit {
       },
     });
   }
-  // public restartAboutMeForm(form: NgForm) {
-  //   form.reset();
-  // }
+
+  estaLogueado() {
+    if (
+      this.stateUser === null ||
+      typeof this.stateUser === undefined ||
+      typeof this.stateUser === 'undefined' ||
+      this.stateUser.auth.currentUser === null
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

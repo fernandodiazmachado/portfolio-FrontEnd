@@ -8,7 +8,7 @@ import { AutenticacionService } from '../../servicios/autenticacion.service';
   templateUrl: './iniciar-sesion.component.html',
   styleUrls: ['./iniciar-sesion.component.css'],
 })
-export class IniciarSesionComponent implements OnInit {
+export class IniciarSesionComponent {
   form: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -21,8 +21,6 @@ export class IniciarSesionComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
   get Email() {
     return this.form.get('email');
   }
@@ -31,21 +29,11 @@ export class IniciarSesionComponent implements OnInit {
   }
 
   onEnviar() {
-    console.log(this.form.value);
+    // Para ver por consola los valores enviados, descomentar el siguiente console.log
+    // console.log(this.form.value);
     this.autenticacionService
       .login(this.form.value)
-      // .then((response) => console.log(response))
       .then(() => this.ruta.navigate(['/portfolio']))
       .catch((error) => console.log(error));
   }
-
-  // onEnviar(event: Event) {
-  //   event.preventDefault;
-  //   this.autenticacionService
-  //     .IniciarSesion(this.form.value)
-  //     .subscribe((data) => {
-  //       console.log('DATA:' + JSON.stringify(data));
-  //       this.ruta.navigate(['/portfolio']);
-  //     });
-  // }
 }

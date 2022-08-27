@@ -1,8 +1,30 @@
 <div id="banner" class="text-header d-flex align-items-end">
   <div class="container">
-    <div class="container-fluid">
+    <span *ngIf="estaLogueado()">
+      <button
+        class="position-absolute top-50 end-50"
+        style="background-color: transparent; border-color: transparent"
+        data-bs-toggle="modal"
+        data-bs-target="#updateBannerModal"
+        (click)="setBanner()"
+      >
+        <i class="far fa-edit contraste_background"></i>
+      </button>
+    </span>
+    <div class="container">
+      <span *ngIf="estaLogueado()">
+        <button
+          class="position-absolute top-00 end-80"
+          style="background-color: transparent; border-color: transparent"
+          data-bs-toggle="modal"
+          data-bs-target="#updatePhotPerfilModal"
+          (click)="setBanner()"
+        >
+          <i class="far fa-edit contraste_background"></i>
+        </button>
+      </span>
       <img
-        src="../assets/photo_perfil.jpg"
+        [src]="urlPhotoPerfil"
         class="img-thumbnail"
         alt="Photo perfil"
         id="photo_perfil"
@@ -18,15 +40,142 @@
     <div class="row">
       <div class="col-sm-6">
         <h2>
-          <span class="contraste_background">{{ miPortfolio.position }}</span>
+          <span class="contraste_background">{{ miPortfolio.titular }}</span>
         </h2>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
         <p>
-          <span class="contraste_background">{{ miPortfolio.ubication }}</span>
+          <span class="contraste_background"
+            >{{ miPortfolio.ubication }} ( {{ miPortfolio.country }} )</span
+          >
         </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL UPDATE BANNER TEXT-->
+
+<div
+  class="modal fade"
+  id="updateBannerModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateBannerModal-title">
+          Modificar Banner
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdateBanner(updateForm)">
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              ngModel="{{ updateBanner?.name }}"
+              name="name"
+            />
+
+            <label for="titular" class="col-form-label">Titular:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="titular"
+              ngModel="{{ updateBanner?.titular }}"
+              name="titular"
+            />
+            <label for="ubication" class="col-form-label">Ubicacion:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ubication"
+              ngModel="{{ updateBanner?.ubication }}"
+              name="ubication"
+            />
+            <label for="country" class="col-form-label">País:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              ngModel="{{ updateBanner?.country }}"
+              name="country"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="onUpdateBanner(updateForm.value)"
+          data-bs-dismiss="modal"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para cambiar foto -->
+<div
+  class="modal fade"
+  id="updatePhotPerfilModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatePhotPerfilModal-title">
+          Modificar foto de perfil
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="img_perfil" class="col-form-label"
+            >Selecciona una imagen como foto de perfil:</label
+          >
+
+          <div class="input-group">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile04"
+              aria-describedby="inputGroupFileAddon04"
+              aria-label="Upload"
+              (change)="uploadImage($event)"
+            />
+          </div>
+          <br />
+          <span class="text-muted"
+            >La imagen se actualizará tras unos segundos de seleccionarla.</span
+          >
+        </div>
       </div>
     </div>
   </div>

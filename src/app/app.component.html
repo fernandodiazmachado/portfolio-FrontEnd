@@ -1,3 +1,9 @@
 <div>
+  <app-navbar
+    id="top"
+    [stateUser]="stateUser"
+    [currentRoute]="currentRoute"
+  ></app-navbar>
   <router-outlet></router-outlet>
 </div>
+<app-scroll-to-top [currentRoute]="currentRoute"></app-scroll-to-top>

@@ -2,36 +2,39 @@
 <div class="card m-2">
   <div class="card-header background" id="educacion">
     <span class="contraste_background">Educacion</span>
-    <button
-      class="position-absolute top-0 end-0"
-      style="background-color: transparent; border-color: transparent"
-      data-bs-toggle="modal"
-      data-bs-target="#addEducationModal"
-    >
-      <i class="fas fa-plus contraste_background"></i>
-    </button>
+    <span *ngIf="estaLogueado()">
+      <button
+        class="position-absolute top-0 end-0"
+        style="background-color: transparent; border-color: transparent"
+        data-bs-toggle="modal"
+        data-bs-target="#addEducationModal"
+      >
+        <i class="fas fa-plus contraste_background"></i>
+      </button>
+    </span>
   </div>
   <div class="row row-cols-1 row-cols-md-3 g-4 m-1">
     <div class="col" *ngFor="let educacion of educacionList">
       <div class="card">
-        <button
-          class="position-absolute top-0 end-80"
-          style="background-color: transparent; border-color: transparent"
-          data-bs-toggle="modal"
-          data-bs-target="#updateEducacionModal"
-          (click)="setUpdateEducation(educacion)"
-        >
-          <i class="far fa-edit" style="color: blue"></i>
-        </button>
+        <span *ngIf="estaLogueado()">
+          <button
+            class="position-absolute top-0 end-80"
+            style="background-color: transparent; border-color: transparent"
+            data-bs-toggle="modal"
+            data-bs-target="#updateEducacionModal"
+            (click)="setUpdateEducation(educacion)"
+          >
+            <i class="far fa-edit" style="color: blue"></i>
+          </button>
 
-        <button
-          class="position-absolute top-0 end-0"
-          style="background-color: transparent; border-color: transparent"
-          (click)="onDeleteEducation(educacion)"
-        >
-          <i class="far fa-trash-alt" style="color: red"></i>
-        </button>
-
+          <button
+            class="position-absolute top-0 end-0"
+            style="background-color: transparent; border-color: transparent"
+            (click)="onDeleteEducation(educacion)"
+          >
+            <i class="far fa-trash-alt" style="color: red"></i>
+          </button>
+        </span>
         <img
           [src]="educacion.img"
           class="card-img-top img_education"

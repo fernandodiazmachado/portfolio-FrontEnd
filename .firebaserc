@@ -1,14 +1,16 @@
 {
+  "projects": {
+    "default": "diaz-machado",
+    "diaz-machado-alias": "diaz-machado"
+  },
   "targets": {
-    "login-portfolio-firebase": {
+    "diaz-machado": {
       "hosting": {
         "portfolio-frontend": [
-          "login-portfolio-firebase"
+          "diaz-machado"
         ]
       }
     }
   },
-  "projects": {
-    "default": "login-portfolio-firebase"
-  }
+  "etags": {}
 }

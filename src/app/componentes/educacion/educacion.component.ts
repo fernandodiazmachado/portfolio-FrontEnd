@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from '../../servicios/portfolio.service';
 import { NgForm } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./educacion.component.css'],
 })
 export class EducacionComponent implements OnInit {
+  @Input() stateUser: any;
   educacionList: any;
   updateEducacion: any;
   constructor(private datosPortfolio: PortfolioService) {}
@@ -59,5 +60,17 @@ export class EducacionComponent implements OnInit {
         alert(error.message);
       },
     });
+  }
+  estaLogueado() {
+    if (
+      this.stateUser === null ||
+      typeof this.stateUser === undefined ||
+      typeof this.stateUser === 'undefined' ||
+      this.stateUser.auth.currentUser === null
+    ) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

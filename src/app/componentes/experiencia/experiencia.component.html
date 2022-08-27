@@ -2,14 +2,16 @@
 <div class="card m-2">
   <div class="card-header background" id="experiencia">
     <span class="contraste_background">Experiencia</span>
-    <button
-      class="position-absolute top-0 end-0"
-      style="background-color: transparent; border-color: transparent"
-      data-bs-toggle="modal"
-      data-bs-target="#addExperiencieModal"
-    >
-      <i class="fas fa-plus contraste_background"></i>
-    </button>
+    <span *ngIf="estaLogueado()">
+      <button
+        class="position-absolute top-0 end-0"
+        style="background-color: transparent; border-color: transparent"
+        data-bs-toggle="modal"
+        data-bs-target="#addExperiencieModal"
+      >
+        <i class="fas fa-plus contraste_background"></i>
+      </button>
+    </span>
   </div>
   <div class="card mb-3 m-2" *ngFor="let experiencia of experienciaList">
     <div class="row g-0">
@@ -22,22 +24,25 @@
       </div>
       <div class="col-md-10">
         <div class="card-body">
-          <button
-            class="position-absolute top-0 end-50"
-            style="background-color: transparent; border-color: transparent"
-            data-bs-toggle="modal"
-            data-bs-target="#updateExperiencieModal"
-            (click)="setUpdateExperience(experiencia)"
-          >
-            <i class="far fa-edit" style="color: blue"></i>
-          </button>
-          <button
-            class="position-absolute top-0 end-0"
-            style="background-color: transparent; border-color: transparent"
-            (click)="onDeleteExperience(experiencia)"
-          >
-            <i class="far fa-trash-alt" style="color: red"></i>
-          </button>
+          <span *ngIf="estaLogueado()">
+            <button
+              class="position-absolute top-0 end-50"
+              style="background-color: transparent; border-color: transparent"
+              data-bs-toggle="modal"
+              data-bs-target="#updateExperiencieModal"
+              (click)="setUpdateExperience(experiencia)"
+            >
+              <i class="far fa-edit" style="color: blue"></i>
+            </button>
+
+            <button
+              class="position-absolute top-0 end-0"
+              style="background-color: transparent; border-color: transparent"
+              (click)="onDeleteExperience(experiencia)"
+            >
+              <i class="far fa-trash-alt" style="color: red"></i>
+            </button>
+          </span>
           <h5 class="card-title">{{ experiencia.company }}</h5>
           <p class="card-text">{{ experiencia.position }}</p>
           <p class="card-text">

@@ -1,9 +1,11 @@
 <div class="background">
-  <app-navbar></app-navbar>
-  <app-banner></app-banner>
-  <app-acerca-de-mi></app-acerca-de-mi>
-  <app-experiencia></app-experiencia>
-  <app-educacion></app-educacion>
-  <app-skills></app-skills>
-  <app-proyectos></app-proyectos>
+  <app-banner [stateUser]="stateUser"></app-banner>
+  <app-acerca-de-mi
+    id="acerca-de-mi"
+    [stateUser]="stateUser"
+  ></app-acerca-de-mi>
+  <app-experiencia id="experiencia" [stateUser]="stateUser"></app-experiencia>
+  <app-educacion id="educacion" [stateUser]="stateUser"></app-educacion>
+  <app-skills id="skills" [stateUser]="stateUser"></app-skills>
+  <app-proyectos id="proyectos" [stateUser]="stateUser"></app-proyectos>
 </div>

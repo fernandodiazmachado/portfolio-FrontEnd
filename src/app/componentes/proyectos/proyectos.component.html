@@ -2,35 +2,39 @@
 <div class="card m-2">
   <div class="card-header background" id="proyectos">
     <span class="contraste_background">Proyectos</span>
-    <button
-      class="position-absolute top-0 end-0"
-      style="background-color: transparent; border-color: transparent"
-      data-bs-toggle="modal"
-      data-bs-target="#addProyectModal"
-    >
-      <i class="fas fa-plus contraste_background"></i>
-    </button>
+    <span *ngIf="estaLogueado()">
+      <button
+        class="position-absolute top-0 end-0"
+        style="background-color: transparent; border-color: transparent"
+        data-bs-toggle="modal"
+        data-bs-target="#addProyectModal"
+      >
+        <i class="fas fa-plus contraste_background"></i>
+      </button>
+    </span>
   </div>
   <div class="row m-2">
     <div class="col-sm-4 mb-3" *ngFor="let proyect of proyectosList">
       <div class="card">
-        <button
-          class="position-absolute top-0 end-80"
-          style="background-color: transparent; border-color: transparent"
-          data-bs-toggle="modal"
-          data-bs-target="#updateProyectModal"
-          (click)="setUpdateProyect(proyect)"
-        >
-          <i class="far fa-edit" style="color: blue"></i>
-        </button>
+        <span *ngIf="estaLogueado()">
+          <button
+            class="position-absolute top-0 end-80"
+            style="background-color: transparent; border-color: transparent"
+            data-bs-toggle="modal"
+            data-bs-target="#updateProyectModal"
+            (click)="setUpdateProyect(proyect)"
+          >
+            <i class="far fa-edit" style="color: blue"></i>
+          </button>
 
-        <button
-          class="position-absolute top-0 end-0"
-          style="background-color: transparent; border-color: transparent"
-          (click)="onDeleteProyect(proyect)"
-        >
-          <i class="far fa-trash-alt" style="color: red"></i>
-        </button>
+          <button
+            class="position-absolute top-0 end-0"
+            style="background-color: transparent; border-color: transparent"
+            (click)="onDeleteProyect(proyect)"
+          >
+            <i class="far fa-trash-alt" style="color: red"></i>
+          </button>
+        </span>
         <div class="card-body m-2">
           <h5 class="card-title">{{ proyect.name }}</h5>
           <p class="card-text">{{ proyect.description }}</p>

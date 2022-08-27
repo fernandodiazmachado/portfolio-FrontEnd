@@ -1,0 +1,16 @@
+<div
+  *ngIf="currentRoute !== '/iniciar-sesion'"
+  class="scroll-to-top"
+  [ngClass]="'show-scrollTop'"
+>
+  <button
+    type="button"
+    class="btn active"
+    data-toggle="button"
+    aria-pressed="true"
+    routerLink="portfolio"
+    fragment="top"
+  >
+    <i class="fas fa-angle-double-up"></i>
+  </button>
+</div>

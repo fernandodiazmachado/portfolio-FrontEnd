@@ -6,10 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PortfolioService {
-  // url: string = '../../assets/data/data.json';
   url: string = 'https://portfolio-diaz.herokuapp.com';
   endPointBanner: string = '/personal_information';
-  endPointAcercaDeMi: string = '/personal_information';
+  endPointAcercaDeMi: string = '/about_me';
   endPointEducacion: string = '/education';
   endPointExperiencia: string = '/experience';
   endPointProyectos: string = '/proyect';
@@ -21,11 +20,19 @@ export class PortfolioService {
   getBanner(): Observable<any> {
     return this.http.get(this.url + this.endPointBanner);
   }
+
+  updateBanner(banner: any): Observable<any> {
+    return this.http.put(this.url + this.endPointBanner + '/1', banner);
+  }
+
   getAcercaDeMi(): Observable<any> {
     return this.http.get(this.url + this.endPointAcercaDeMi);
   }
   updateAcercaDeMi(aboutMe: any): Observable<any> {
-    return this.http.put(this.url + this.endPointAcercaDeMi + '/1', aboutMe);
+    return this.http.put(
+      this.url + this.endPointAcercaDeMi + '/' + aboutMe.id,
+      aboutMe
+    );
   }
   getEducacion(): Observable<any> {
     return this.http.get(this.url + this.endPointEducacion);

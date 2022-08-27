@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { ScrollToTopComponent } from './shared/scroll-to-top/scroll-to-top.component';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     NavbarComponent,
     IniciarSesionComponent,
     PortfolioComponent,
+    ScrollToTopComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     FormsModule,
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent],
