@@ -84,9 +84,11 @@
             <textarea
               class="form-control"
               id="message-text"
+              ngModel="{{ updateProyect?.description }}"
               name="description"
               placeholder="Ingrese descripción del proyeto"
-            ></textarea>
+              >{{ updateProyect?.description }}</textarea
+            >
             <label for="link" class="col-form-label"
               >Link de repositorio:</label
             >
